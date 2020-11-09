@@ -1,0 +1,712 @@
+// ビジネスマスタ
+entity MBusiness {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    businessName               String                     maxlength(200)             // ビジネス名称
+    ownerName                  String                     maxlength(200)             // 代表者氏名
+    ownerNameKtkn              String                     maxlength(100)             // 代表者氏名（カタカナ）
+    address                    String                     maxlength(400)             // 住所
+    postNumber                 String                     maxlength(10)              // 郵便番号
+    telNumber                  String                     maxlength(15)              // 電話番号
+    faxNumber                  String                     maxlength(15)              // FAX番号
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 支払方法設定マスタ
+entity MPaymentMethod {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    paymentMethodId            Integer                                               // 支払方法ID
+    paymentType                String                     maxlength(3)               // 支払方式CD
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 税設定マスタ
+entity MTax {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    taxId                      Integer                                               // 税ID
+    taxName                    String                                                // 税名称
+    taxCode                    String                     maxlength(1)               // 税区分
+    taxRoundType               String                     maxlength(1)               // 税端数処理区分
+    taxReliefApplyType         String                     maxlength(1)               // 軽減税率適用区分
+    taxRateNormal              BigDecimal                                            // 標準税率
+    taxRateRelief              BigDecimal                                            // 軽減税率
+    applyDate                  ZonedDateTime                                         // 適用日時
+    sortOrder                  Integer                                               // 表示順
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// コードマスタ
+entity MCode {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    codeGroup                  String                     maxlength(4)               // コードグループ
+    code                       String                     maxlength(2)               // コード
+
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// ライセンスマスタ
+entity MLicense {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    licenseType                String                     maxlength(4)               // 種類CD
+    licenseCode                String                     maxlength(2)               // ライセンスCD
+    memoInfo                   String                     maxlength(400)             // 備考
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 店舗マスタ
+entity MStore {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    storeName                  String                     maxlength(100)             // 店舗名
+    storeNameKtkn              String                     maxlength(100)             // 店舗名カタカナ
+    storeIf                    String                     maxlength(400)             // 店舗紹介
+    storeAddress               String                     maxlength(400)             // 店舗住所
+    storePhone                 String                     maxlength(15)              // 店舗電話
+    postNumber                 String                     maxlength(10)              // 郵便番号
+    faxNumber                  String                     maxlength(15)              // FAX番号
+    startTime                  String                     maxlength(5)               // 営業開始時間
+    endTime                    String                     maxlength(5)               // 営業締め時間
+    staffCheck                 String                     maxlength(2)               // 店員確認要否
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// テーブルマスタ
+entity MTable {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    tableId                    Integer                                               // テーブルID
+    tableName                  String                     maxlength(100)             // テーブル名称
+    tableSeatCount             Integer                                               // 座席数
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 店舗媒体マスタ
+entity MStoreMedium {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    mediumId                   Integer                                               // 媒体ID
+    mediumType                 String                     maxlength(3)               // 媒体种类
+    sortOrder                  Integer                                               // 表示順
+    terminalDistinction        String                     maxlength(2)               // 用途区分
+    imagePath                  String                     maxlength(400)             // 画像パス
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 伝票マスタ
+entity MReceipt {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    receiptId                  Integer                                               // 伝票ID
+    receiptName                String                     maxlength(100)             // 伝票名称
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// プリンタマスタ
+entity MPrint {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    printId                    Integer                                               // プリンタID
+    printName                  String                     maxlength(100)             // プリンタ名称
+    printIp                    String                     maxlength(15)              // プリンタip
+    bluetoothName              String                     maxlength(100)             // ブルートゥース名称
+    brandCode                  String                     maxlength(2)               // プリンタブランドCD
+    printModel                 String                     maxlength(100)             // プリンタモデル
+    connectionMethodCode       String                     maxlength(2)               // 接続方式CD
+    printSize                  String                     maxlength(2)               // 伝票幅CD
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// キチンマスタ
+entity MKitchen {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    kitchenId                  Integer                                               // キチンID
+    kitchenName                String                     maxlength(100)             // キチン名称
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 伝票プリンタ関連テーブル
+entity RReceiptPrint {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    receiptId                  Integer                                               // 伝票ID
+    printId                    Integer                                               // プリンタID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// キチンプリンタ関連テーブル
+entity RKitchenPrint {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    kitchenId                  Integer                                               // キチンID
+    printId                    Integer                                               // プリンタID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// カテゴリマスタ
+entity MCategory {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    categoryId                 Integer                                               // カテゴリID
+    categoryName               String                                                // カテゴリ名称
+    sortOrder                  Integer                                               // 表示順
+    gradation                  Integer                                               // 层次
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// カテゴリ関連テーブル
+entity RParentCategory {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    parentCategoryId           Integer                                               // 親カテゴリID
+    childCategoryId            Integer                                               // 子カテゴリID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 商品単位マスタ
+entity MUnit {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    unitId                     Integer                                               // 単位ID
+    unitName                   String                                                // 単位名称
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 商品マスタ
+entity MItem {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    itemId                     Integer                                               // 商品ID
+    unitId                     Integer                                               // 単位ID
+    kitchenId                  Integer                                               // キチンID
+    categoryId                 Integer                                               // カテゴリID
+    optionFlag                 String                     maxlength(1)               // オプション有フラグ
+    itemName                   String                                                // 商品名称
+    itemPrice                  BigDecimal                                            // 商品单价
+    itemInfo                   String                                                // 商品说明
+    status                     String                     maxlength(2)               // 非表示
+    taxId                      String                     maxlength(10)              // 税ID
+    sortOrder                  Integer                                               // 表示順
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// カテゴリ商品関連テーブル
+entity RCategoryItem {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    categoryId                 Integer                                               // カテゴリID
+    itemId                     Integer                                               // 商品ID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 商品欠品マスタ
+entity MSellOff {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    sellOffId                  Integer                                               // 欠品ID
+    itemId                     Integer                                               // 商品ID
+    sellOffStart               ZonedDateTime                                         // 欠品開始日時
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 商品索引マスタ
+entity MItemIndex {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    itemIndexId                Integer                                               // 商品索引ID
+    itemId                     Integer                                               // 商品ID
+    itemNameShort              String                                                // 略称
+    lowerCase                  String                     maxlength(100)             // 商品名称（ひらがな）
+    capitalCase                String                     maxlength(100)             // 商品名称（カタカナ）
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 商品画像マスタ
+entity MItemImage {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    itemImageId                Integer                                               // 画像ID
+    itemId                     Integer                                               // 商品ID
+    imagePath                  String                     maxlength(400)             // 画像パス
+    shortImagePath             String                     maxlength(400)             // ショート画像パス
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 注文サマリテーブル
+entity OOrderSummary {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    orderSummaryId             String                     maxlength(10)              // 注文サマリID
+    receivablesId              String                     maxlength(10)              // 受付id
+    customerCount              Integer                                               // 顧客人数
+    tableId                    String                     maxlength(10)              // テーブルID
+    orderAmount                BigDecimal                                            // 注文額
+    priceDiscountAmount        BigDecimal                                            // 値引額
+    priceDiscountRate          BigDecimal                                            // 値引率
+    paymentAmount              BigDecimal                                            // 支払額
+    takeoutFlag                String                     maxlength(1)               // テイクアウト区分
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 注文テーブル
+entity OOrder {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    orderId                    Integer                                               // 注文ID
+    orderSummaryId             String                     maxlength(20)              // 注文サマリID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 注文明細テーブル
+entity OOrderDetails {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    orderDetailId              Integer                                               // 注文明細ID
+    orderId                    Integer                                               // 注文ID
+    itemId                     Integer                                               // 商品ID
+    itemPrice                  BigDecimal                                            // 単価
+    itemCount                  Integer                                               // 商品個数
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 注文明細オプションテーブル
+entity OOrderDetailsOption {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    orderDetailId              Integer                                               // 注文明細ID
+    itemOptionTypeCode         String                     maxlength(4)               // 商品オプション種類コード
+    itemOptionCode             String                     maxlength(2)               // 商品オプションコード
+    diffPrice                  BigDecimal                                            // 差額
+    itemCount                  Integer                                               // 数量
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 呼出テーブル
+entity OCall {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    callId                     Integer                                               // 呼出ID
+    receivablesId              String                     maxlength(20)              // 受付ID
+    callNumber                 Integer                                               // 呼叫次数
+    callStatus                 String                     maxlength(2)               // 呼出対応状況
+    tableId                    String                     maxlength(10)              // テーブルID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 受付テーブル
+entity OReceivables {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    receivablesId              String                     maxlength(20)              // 受付ID
+    receptionNo                Integer                                               // 受付番号
+    receptionTime              ZonedDateTime                                         // 受付日時
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 支払テーブル
+entity OPayment {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    paymentId                  Integer                                               // 支払ID
+    orderSummaryId             String                     maxlength(10)              // 注文サマリID
+    paymentMethod              String                     maxlength(2)               // 支払方法区分
+    paymentAmount              BigDecimal                                            // 支払金額
+    paymentTerminal            String                     maxlength(2)               // 支払方式
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// ユーザテーブル
+entity RUser {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    userId                     Integer                                               // ユーザID
+    loginId                    String                     maxlength(20)              // 登入ID
+    userPassword               String                     maxlength(64)              // 用户密码
+    userName                   String                     maxlength(64)              // 姓名
+    userLastLoginTime          ZonedDateTime                                         // 上次登录时间
+    userLoginCount             Integer                                               // 登录次数
+    stopFlag                   Integer                                               // 停用标识
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// ユーザ関連役割テーブル
+entity RUserRole {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    userId                     Integer                                               // ユーザID
+    roleId                     Integer                                               // 角色ID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// ユーザ役割テーブル
+entity RRole {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    roleId                     Integer                                               // 角色ID
+    roleName                   String                     maxlength(64)              // 角色名
+    stopFlag                   Integer                                               // 停用标识
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 役割関連機能テーブル
+entity RRoleModel {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    roleId                     Integer                                               // 角色ID
+    modelId                    Integer                                               // 机能ID
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 機能テーブル
+entity RModel {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    modelId                    Integer                                               // 机能ID
+    modelName                  String                     maxlength(64)              // 机能名
+    stopFlag                   Integer                                               // 停用标识
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// オプション種類マスタ
+entity MOptionType {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    optionTypeCd               String                     maxlength(4)               // オプション種類コード
+    optionTypeName             String                                                // オプション種類名
+    sortOrder                  Integer                                               // 表示順
+    classification             String                     maxlength(2)               // 区分
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// オプションマスタ
+entity MOption {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    optionTypeCd               String                     maxlength(4)               // オプション種類コード
+    optionCode                 String                     maxlength(2)               // オプションコード
+    optionName                 String                                                // オプション名
+    sortOrder                  Integer                                               // 表示順
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 商品オプション関連テーブル
+entity RItemOption {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    itemId                     Integer                                               // 商品ID
+    optionTypeCode             String                     maxlength(4)               // オプション種類コード
+    optionCode                 String                     maxlength(2)               // オプションコード
+    diffPrice                  BigDecimal                                            // 差額
+    defaultFlags               Integer                                               // デフォルトフラグ
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// 関連商品テーブル
+entity RItem {
+    id                         Long                                                  // ID
+    businessId                 String                     maxlength(10)              // ビジネスID
+    storeId                    String                     maxlength(10)              // 店舗ID
+    itemId                     Integer                                               // 商品ID
+    itemFirstId                Integer                                               // 関連先商品ID
+    sortOrder                  Integer                                               // 表示順
+    delFlag                    Integer                                               // 削除フラグ
+    insOperCd                  String                     maxlength(100)             // 登録者
+    insDateTime                ZonedDateTime                                         // 登録日時
+    updOperCd                  String                     maxlength(100)             // 更新者
+    updDateTime                ZonedDateTime                                         // 更新日時
+    version                    Integer                                               // バージョン
+}
+
+// ビジネスマスタ
+paginate MBusiness with pagination
+// 支払方法設定マスタ
+paginate MPaymentMethod with pagination
+// 税設定マスタ
+paginate MTax with pagination
+// コードマスタ
+paginate MCode with pagination
+// ライセンスマスタ
+paginate MLicense with pagination
+// 店舗マスタ
+paginate MStore with pagination
+// テーブルマスタ
+paginate MTable with pagination
+// 店舗媒体マスタ
+paginate MStoreMedium with pagination
+// 伝票マスタ
+paginate MReceipt with pagination
+// プリンタマスタ
+paginate MPrint with pagination
+// キチンマスタ
+paginate MKitchen with pagination
+// 伝票プリンタ関連テーブル
+paginate RReceiptPrint with pagination
+// キチンプリンタ関連テーブル
+paginate RKitchenPrint with pagination
+// カテゴリマスタ
+paginate MCategory with pagination
+// カテゴリ関連テーブル
+paginate RParentCategory with pagination
+// 商品単位マスタ
+paginate MUnit with pagination
+// 商品マスタ
+paginate MItem with pagination
+// カテゴリ商品関連テーブル
+paginate RCategoryItem with pagination
+// 商品欠品マスタ
+paginate MSellOff with pagination
+// 商品索引マスタ
+paginate MItemIndex with pagination
+// 商品画像マスタ
+paginate MItemImage with pagination
+// 注文サマリテーブル
+paginate OOrderSummary with pagination
+// 注文テーブル
+paginate OOrder with pagination
+// 注文明細テーブル
+paginate OOrderDetails with pagination
+// 注文明細オプションテーブル
+paginate OOrderDetailsOption with pagination
+// 呼出テーブル
+paginate OCall with pagination
+// 受付テーブル
+paginate OReceivables with pagination
+// 支払テーブル
+paginate OPayment with pagination
+// ユーザテーブル
+paginate RUser with pagination
+// ユーザ関連役割テーブル
+paginate RUserRole with pagination
+// ユーザ役割テーブル
+paginate RRole with pagination
+// 役割関連機能テーブル
+paginate RRoleModel with pagination
+// 機能テーブル
+paginate RModel with pagination
+// オプション種類マスタ
+paginate MOptionType with pagination
+// オプションマスタ
+paginate MOption with pagination
+// 商品オプション関連テーブル
+paginate RItemOption with pagination
+// 関連商品テーブル
+paginate RItem with pagination

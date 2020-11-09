@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.cnc.qr",
+      "nativeLanguage": "ja"
+    },
+    "jhipsterVersion": "6.7.1",
+    "applicationType": "monolith",
+    "baseName": "qrServer",
+    "packageName": "com.cnc.qr",
+    "packageFolder": "com/cnc/qr",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NmM1NTQzNDdiYjIzM2EwMzc1NGRkNzIyNzhjMmEzNGM3OTlhNmE4NDgxZGU2ZWUwZTM0MDU3M2UzNDk0ZjQwYmZlOGUwOGE3MzQ1NjMzZjY0OGIxMDBiMjllMGI5MDhlYzU1ZDkyYmQ4ZWYxZWE3NTVlNmNmNzJhYTZiZWQ4MDc=",
+    "embeddableLaunchScript": false,
+    "creationTimestamp": 1582710845886,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "ja",
+    "languages": ["ja"],
+    "blueprints": [],
+    "skipClient": true
+  }
+}
